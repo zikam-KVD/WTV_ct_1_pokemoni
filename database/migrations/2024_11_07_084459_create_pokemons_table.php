@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('pokemons', function (Blueprint $table) {
             $table->id();
-            $table->string('obrazek', 128);
-            $table->string('nazev', 128);
-            $table->string('typ', 64);
-            $table->string('popisek', 64);
+            $table->string('nazev');
+            $table->string('popis');
+            $table->unsignedBigInteger('druh');
             $table->timestamps();
+
+            $table->foreign('druh')->on('types')->references('id');
         });
     }
 
