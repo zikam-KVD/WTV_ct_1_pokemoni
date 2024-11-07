@@ -14,7 +14,7 @@ class insert_types extends Seeder
     public function run(): void
     {
 
-        Typ::create(
+        Typ::insert(
             [
                 ["nazev" => "vodní", "barva" => "#1e90ff"],
                 ["nazev" => "ohnivý", "barva" => "#800000"],
