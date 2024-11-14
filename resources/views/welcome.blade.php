@@ -24,21 +24,18 @@
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
         <main>
-            <div class="card shadow">
-                <img src="{{ asset('images/bulbasaur.png') }}" alt="Bulba">
-                <a href="/bulbasaur">
-                    <i class="fa-solid fa-link"></i>
-                </a>
-            </div>
-            <div class="card shadow">
-                <img src="{{ asset('images/charmander.png') }}" alt="Drak">
-            </div>
-            <div class="card">
-                <img src="{{ asset('images/ekans.png') }}" alt="Had">
-            </div>
-            <div class="card">
-                <img src="{{ asset('images/squirtle.png') }}" alt="Squrtle">
-            </div>
+
+            @foreach ($digimoni as $pokemon)
+                <div class="card">
+                    <img
+                        src="{{ asset('images/' . strtolower($pokemon->nazev) . '.png') }}"
+                        alt="{{ $pokemon->nazev }}"
+                    >
+                    <a href="{{ route('detail', ['id' => $pokemon->id]) }}">
+                        <i class="fa-solid fa-link"></i>
+                    </a>
+                </div>
+            @endforeach
 
         </main>
     </body>

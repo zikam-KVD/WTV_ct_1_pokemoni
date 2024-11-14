@@ -24,11 +24,14 @@
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
         <main>
-            <div class="card shadow">
-                <img src="{{ asset('images/bulbasaur.png') }}" alt="Bulba">
-                <a href="/bulbasaur">
-                    <i class="fa-solid fa-link"></i>
-                </a>
+            <div class="card">
+                <img
+                    src="{{ asset('images/' . strtolower($pokemon->nazev) .'.png') }}"
+                    alt="{{ $pokemon->nazev }}"
+                >
+                <p>
+                    {{ $pokemon->popis }}
+                </p>
             </div>
         </main>
     </body>

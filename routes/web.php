@@ -1,11 +1,16 @@
 <?php
 
+use App\Models\Pokemon;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $poke = Pokemon::all();
+
+    return view('welcome', ['digimoni' => $poke]);
 });
 
-Route::get('/bulbasaur', function() {
-    return view('bulbasaur');
-});
+Route::get('/pokemon/{id}', function($id) {
+    $pokemon = Pokemon::find($id);
+
+    return view('detail', ['pokemon' => $pokemon]);
+})->name("detail");
