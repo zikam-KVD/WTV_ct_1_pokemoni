@@ -1,0 +1,36 @@
+$barva: gray;
+$barvaPismaSvetla: White;
+
+body {
+    background-color: $barva;
+    main#detail {
+        display: block;
+
+        .card {
+            width: 400px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: auto;
+            padding: 15px;
+
+            &-typ {
+                border-radius: 3px;
+                padding: 5px;
+                color: $barvaPismaSvetla;
+            }
+
+            p {
+                padding-top: 25px;
+            }
+
+            img {
+                width: 250px;
+                filter: none;
+                animation: none;
+            }
+        }
+    }
+}
+

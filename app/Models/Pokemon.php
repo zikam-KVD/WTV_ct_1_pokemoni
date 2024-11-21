@@ -8,4 +8,9 @@ class Pokemon extends Model
 {
     protected $table = "pokemons";
     protected $fillable = ["nazev", "popis", "druh"];
+
+    public function typ()
+    {
+        return $this->belongsTo(Typ::class, "druh", "id");
+    }
 }

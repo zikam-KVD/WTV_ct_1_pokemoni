@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Pokemon;
+use App\Models\Typ;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,5 +13,15 @@ Route::get('/', function () {
 Route::get('/pokemon/{id}', function($id) {
     $pokemon = Pokemon::find($id);
 
-    return view('detail', ['pokemon' => $pokemon]);
+    if($pokemon == null)
+    {
+        abort(404);
+    }
+
+    //$typ = Typ::find($pokemon->druh);
+    $typ = null;
+
+    return view(
+        'detail',
+        ['pokemon' => $pokemon, 'typ' => $typ]);
 })->name("detail");
