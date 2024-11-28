@@ -1,27 +1,28 @@
 <?php
 
+use App\Http\Controllers\PokemonController;
 use App\Models\Pokemon;
 use App\Models\Typ;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    $poke = Pokemon::all();
+//Při navštívení url "/" se mi ze třídy PokemonController zavolá funkce ukazIndex.
+Route::get('/', [PokemonController::class, 'ukazIndex']);
 
-    return view('welcome', ['digimoni' => $poke]);
-});
+Route::get('/pokemon/{id}', [PokemonController::class, 'ukazDetail'])->name("detail");
 
-Route::get('/pokemon/{id}', function($id) {
-    $pokemon = Pokemon::find($id);
+//routa zobrazujici pokemony daneho typ podle ID
+Route::get('/typ/{id}', function($id) {
+    $typ = Typ::find($id);
 
-    if($pokemon == null)
+    if($typ == null)
     {
         abort(404);
     }
 
-    //$typ = Typ::find($pokemon->druh);
-    $typ = null;
-
     return view(
-        'detail',
-        ['pokemon' => $pokemon, 'typ' => $typ]);
-})->name("detail");
+        'pokemoniPodleTypu',
+        [
+            'pokemoni' => $typ->pokemons,
+            'nazevTypu' => $typ->nazev
+    ]);
+})->name("typy");

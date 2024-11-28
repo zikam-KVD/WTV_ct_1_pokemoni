@@ -9,9 +9,8 @@ class Typ extends Model
     protected $table = "types";
     protected $fillable = ["nazev", "barva"];
 
-    //TODO: pokemons pro vypis vsech pokemonu daneho typu
-    //TODO: npm run build
-    public function pokemon()
+    //TODO: přihlašování a autorizace uživatele
+    public function pokemons()
     {
         return $this->hasMany(Pokemon::class, "druh", "id");
     }
