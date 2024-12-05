@@ -34,3 +34,17 @@ body {
     }
 }
 
+nav {
+    .nav-inner {
+        max-width: 1100px;
+        padding: 10px 0;
+        display: flex;
+        margin: auto;
+        justify-content: end;
+        border-bottom: 2px solid goldenrod;
+        gap: 15px;
+        color: white;
+        font-weight: bold;
+    }
+}
+
